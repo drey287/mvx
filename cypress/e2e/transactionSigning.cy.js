@@ -79,6 +79,8 @@ describe('template spec', () => {
     cy.get('[data-testid="signBtn"]').click().wait(3000)
 
     // check confirmation message
-    cy.get('.dapp-core-component__main__h5').should('be.visible').contains('Transaction successfully signed')
+    cy.get('.dapp-core-component__main__h5').should('be.visible').contains('Ping transaction successful\n' +
+        '\nd')
+
   })
 })
