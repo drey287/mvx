@@ -67,6 +67,18 @@ describe('template spec', () => {
 
 
   it('passes', () => {
-    cy.get('.action-btn > .btn').click()
+    cy.get('.action-btn > .btn').click().wait(5000)
+
+    // type the password
+    devnet_unlock.popup_password_input().type(clients.password)
+
+    // click on the submit button
+    devnet_unlock.popup_submit_button().click().wait(1000)
+
+    // sign the transaction
+    cy.get('[data-testid="signBtn"]').click().wait(3000)
+
+    // check confirmation message
+    cy.get('.dapp-core-component__main__h5').should('be.visible').contains('Transaction successfully signed')
   })
 })
